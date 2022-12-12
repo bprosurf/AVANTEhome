@@ -1,0 +1,18 @@
+{% load static %}
+{% block content %}
+
+<h1><b>HOUSE LIST</b></h1>
+<a class="btn btn-primary" href = "{% url 'addListing' %}">Add Listing</a>
+<br><br>
+
+<div class = "container">
+    {% for h in houses %}
+    <p>
+        <a class="btn btn-primary" href="{% url 'editListing' house_id=h.id %}">Edit</a>
+        {{ h.house_name }}
+        <a class="btn btn-primary" href="{% url 'deleteListing' house_id=h.id %}">Delete</a>
+        
+    </p>
+    {% endfor %}
+</div>
+{% endblock %}
