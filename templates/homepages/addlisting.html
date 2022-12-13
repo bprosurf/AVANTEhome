@@ -54,5 +54,9 @@
 
         <button type = "submit">Add</button>
     </form>
+    <form class = '' action = "{% url 'listings' %}">
+        {%csrf_token%}
+        <button class="btn btn-primary" type = 'submit' >Back to Home</button>
+    </form> 
 {% endblock %}
 

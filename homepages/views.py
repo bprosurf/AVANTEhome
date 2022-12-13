@@ -77,3 +77,20 @@ def editListing(request):
         house.save()
 
     return homeListingsView(request)
+
+def searchListing(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        listing = HomeDetails.objects.filter(city__contains = searched)
+
+        return render(request, 'homepages/searchResults.html', {'searched':searched, 'listing': listing})
+    else:
+        return render(request, 'homepages/searchResults.html', {})
+
+def viewListingView(request, house_id):
+    data = HomeDetails.objects.get(id = house_id)
+    context = {
+        'record': data
+    }
+    
+    return render(request, 'homepages/viewlisting.html', context)
